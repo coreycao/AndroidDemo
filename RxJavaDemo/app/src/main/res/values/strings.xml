@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidDemo</string>
+    <string name="main_event">EventBus Demo</string>
+    <string name="main_rx">rxJava Demo</string>
+
+    <string name="rx_1">Simple Color List</string>
+    <string name="rx_2">Favorite Tv Shows</string>
+    <string name="rx_3">Improved Favorite Tv Shows</string>
+    <string name="rx_4">Button Counter</string>
+    <string name="rx_5">Value Display</string>
+    <string name="rx_6">City Search</string>
+</resources>
