@@ -32,6 +32,4 @@ dependencies {
     compile 'io.reactivex.rxjava2:rxjava:2.0.9'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile 'com.alibaba:fastjson:1.1.46.android'
-    compile 'com.taobao.android:weex_sdk:0.5.1@aar'
 }
