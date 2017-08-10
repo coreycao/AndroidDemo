@@ -2,6 +2,8 @@ package com.ucar.sycao.rx;
 
 import android.content.Context;
 
+import com.ucar.sycao.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +15,11 @@ import java.util.List;
 public class RestClient {
     private Context context;
 
-    RestClient(Context context){
+    RestClient(Context context) {
         this.context = context;
     }
 
-    public List<String> getFavoriteTvShows(){
+    public List<String> getFavoriteTvShows() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -27,7 +29,7 @@ public class RestClient {
         return createTvShowList();
     }
 
-    public List<String> getFavoriteTvShowsWithException(){
+    public List<String> getFavoriteTvShowsWithException() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -55,4 +57,28 @@ public class RestClient {
         tvShows.add("Law And Order");
         return tvShows;
     }
+
+    public List<String> searchForCity(String searchString) {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return getMatchingCities(searchString);
+    }
+
+    private List<String> getMatchingCities(String searchString) {
+        if (searchString.isEmpty()) {
+            return new ArrayList<>();
+        }
+        String[] cities = context.getResources().getStringArray(R.array.city_list);
+        List<String> toReturn = new ArrayList<>();
+        for (String city : cities) {
+            if (city.toLowerCase().startsWith(searchString)) {
+                toReturn.add(city);
+            }
+        }
+        return toReturn;
+    }
+
 }

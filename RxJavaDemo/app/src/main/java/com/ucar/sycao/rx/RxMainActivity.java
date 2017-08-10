@@ -22,6 +22,7 @@ public class RxMainActivity extends AppCompatActivity implements View.OnClickLis
     Button btn3;
     Button btn4;
     Button btn5;
+    Button btn6;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +38,9 @@ public class RxMainActivity extends AppCompatActivity implements View.OnClickLis
         btn4.setOnClickListener(this);
         btn5= (Button) findViewById(R.id.btn_rx_main_5);
         btn5.setOnClickListener(this);
+        btn6 = (Button) findViewById(R.id.btn_rx_main_6);
+        btn6.setOnClickListener(this);
+
     }
 
     @Override
@@ -56,6 +60,10 @@ public class RxMainActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btn_rx_main_5:
                 startActivity(new Intent(getApplicationContext(),RxActivity5.class));
+                break;
+
+            case R.id.btn_rx_main_6:
+                startActivity(new Intent(getApplicationContext(), RxActivity6.class));
                 break;
             default:
                 Toast.makeText(getApplicationContext(), "todo...", Toast.LENGTH_SHORT).show();
