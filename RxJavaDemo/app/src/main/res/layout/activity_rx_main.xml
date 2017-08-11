@@ -38,4 +38,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/rx_6"/>
+
+    <Button
+        android:id="@+id/btn_rx_main_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rx Gank" />
+
 </LinearLayout>

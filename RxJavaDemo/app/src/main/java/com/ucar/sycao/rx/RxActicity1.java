@@ -16,6 +16,7 @@ import org.reactivestreams.Subscription;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -27,13 +28,15 @@ import io.reactivex.disposables.Disposable;
 
 public class RxActicity1 extends AppCompatActivity {
 
+    private static final String TAG = "RxActivity1";
+
     RecyclerView recyclerView;
     SimpleStringAdapter simpleStringAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
-        Log.d("RxActicity1", "onCreate");
+        Log.d(TAG, "onCreate");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx1);
@@ -42,8 +45,8 @@ public class RxActicity1 extends AppCompatActivity {
         simpleStringAdapter = new SimpleStringAdapter(this);
         recyclerView.setAdapter(simpleStringAdapter);
         createObservable();
+//        Flowable.just()
     }
-
 
     private void createObservable() {
         Observable<List<String>> listObservable = Observable.just(getColorList());

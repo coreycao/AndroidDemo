@@ -46,6 +46,9 @@
         <activity
             android:name=".rx.RxActivity6"
             android:parentActivityName=".rx.RxMainActivity" />
+        <activity
+            android:name=".rx.GankActivity"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

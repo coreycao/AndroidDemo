@@ -40,6 +40,7 @@ public class RxMainActivity extends AppCompatActivity implements View.OnClickLis
         btn5.setOnClickListener(this);
         btn6 = (Button) findViewById(R.id.btn_rx_main_6);
         btn6.setOnClickListener(this);
+        findViewById(R.id.btn_rx_main_7).setOnClickListener(this);
 
     }
 
@@ -61,10 +62,13 @@ public class RxMainActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_rx_main_5:
                 startActivity(new Intent(getApplicationContext(),RxActivity5.class));
                 break;
-
             case R.id.btn_rx_main_6:
                 startActivity(new Intent(getApplicationContext(), RxActivity6.class));
                 break;
+            case R.id.btn_rx_main_7:
+                startActivity(new Intent(getApplicationContext(), GankActivity.class));
+                break;
+
             default:
                 Toast.makeText(getApplicationContext(), "todo...", Toast.LENGTH_SHORT).show();
         }

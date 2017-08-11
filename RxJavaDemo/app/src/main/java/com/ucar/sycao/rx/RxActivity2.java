@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -21,6 +22,7 @@ import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -33,6 +35,7 @@ public class RxActivity2 extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SimpleStringAdapter simpleStringAdapter;
     private RestClient restClient;
+    Disposable disposable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,15 +59,11 @@ public class RxActivity2 extends AppCompatActivity {
         });
 
         // https://github.com/ReactiveX/RxJava/wiki/What%27s-different-in-2.0#subscription
-        tvShowObservable
+        disposable = tvShowObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        new Observer<List<String>>() {
-                            @Override
-                            public void onSubscribe(@NonNull Disposable d) {
-
-                            }
+                .subscribeWith(
+                        new DisposableObserver<List<String>>() {
 
                             @Override
                             public void onNext(@NonNull List<String> strings) {
@@ -88,5 +87,15 @@ public class RxActivity2 extends AppCompatActivity {
         simpleStringAdapter.setStrings(tvShows);
         progressBar.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("isDispose", String.valueOf(disposable.isDisposed()));
+        if (!disposable.isDisposed())
+            disposable.dispose();
+        Log.d("isDispose", String.valueOf(disposable.isDisposed()));
+
     }
 }

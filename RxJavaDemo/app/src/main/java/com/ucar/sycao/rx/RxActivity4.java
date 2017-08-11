@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import com.ucar.sycao.R;
 
+import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 import io.reactivex.subjects.PublishSubject;
 
 /**
@@ -40,6 +42,41 @@ public class RxActivity4 extends AppCompatActivity {
             }
         });
         createCounterEmitter();
+        Observable.just("hello")
+                .subscribe(new DisposableObserver<String>() {
+                    @Override
+                    public void onNext(@NonNull String s) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+        Disposable disposable = Observable.just("hello")
+                .subscribeWith(new DisposableObserver<String>() {
+                    @Override
+                    public void onNext(@NonNull String s) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+        disposable.dispose();
     }
 
     private void createCounterEmitter(){
