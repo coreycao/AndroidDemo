@@ -23,7 +23,7 @@ public class SimpleStringAdapter extends Adapter<SimpleStringAdapter.ViewHolder>
     private final Context mContext;
     private final List<String> mStrings = new ArrayList<String>();
 
-    SimpleStringAdapter(Context context){
+    public SimpleStringAdapter(Context context) {
         this.mContext = context;
     }
 

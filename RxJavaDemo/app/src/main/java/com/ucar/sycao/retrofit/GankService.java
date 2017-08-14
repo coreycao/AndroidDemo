@@ -1,7 +1,8 @@
-package com.ucar.sycao.rx;
+package com.ucar.sycao.retrofit;
 
-import java.util.List;
+import com.ucar.sycao.retrofit.model.GankRandom;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -14,5 +15,5 @@ public interface GankService {
 
     // http://gank.io/api/random/data/分类/个数
     @GET("random/data/{category}/{number}")
-    Call<String> listRandom(@Path("category") String category, @Path("number") String number);
+    Observable<GankRandom> listRandom(@Path("category") String category, @Path("number") String number);
 }

@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.ucar.sycao.R;
+import com.ucar.sycao.retrofit.GankActivity;
 
 /**
  * Created by sycao on 2017/8/4.
