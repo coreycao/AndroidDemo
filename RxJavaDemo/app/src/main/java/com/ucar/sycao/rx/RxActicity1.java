@@ -21,6 +21,7 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by sycao on 2017/8/3.
@@ -45,7 +46,6 @@ public class RxActicity1 extends AppCompatActivity {
         simpleStringAdapter = new SimpleStringAdapter(this);
         recyclerView.setAdapter(simpleStringAdapter);
         createObservable();
-//        Flowable.just()
     }
 
     private void createObservable() {

@@ -17,6 +17,7 @@ import com.ucar.sycao.rx.SimpleStringAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -42,6 +43,8 @@ public class GankActivity extends AppCompatActivity {
     SimpleStringAdapter simpleStringAdapter;
     Disposable disposable;
     ProgressDialog progressDialog;
+
+    final String pageSize = "10";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,7 +88,7 @@ public class GankActivity extends AppCompatActivity {
             }
         });
 */
-        disposable = service.listRandom("Android", "5")
+        disposable = service.listRandom("Android", pageSize)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(new Function<GankRandom, List<String>>() {

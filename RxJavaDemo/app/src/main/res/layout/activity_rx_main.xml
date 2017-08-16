@@ -1,48 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
         android:id="@+id/btn_rx_main_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/rx_1"/>
+        android:text="@string/rx_1" />
 
     <Button
         android:id="@+id/btn_rx_main_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/rx_2"/>
+        android:text="@string/rx_2" />
 
     <Button
         android:id="@+id/btn_rx_main_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/rx_3"/>
+        android:text="@string/rx_3" />
 
     <Button
         android:id="@+id/btn_rx_main_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/rx_4"/>
+        android:text="@string/rx_4" />
 
     <Button
         android:id="@+id/btn_rx_main_5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/rx_5"/>
+        android:text="@string/rx_5" />
 
     <Button
         android:id="@+id/btn_rx_main_6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/rx_6"/>
+        android:text="@string/rx_6" />
 
     <Button
         android:id="@+id/btn_rx_main_7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rx Gank" />
+        android:text="@string/rx_7" />
+
+    <Button
+        android:id="@+id/btn_rx_main_8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rx_8" />
 
 </LinearLayout>

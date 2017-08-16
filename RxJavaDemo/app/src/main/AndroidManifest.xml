@@ -49,6 +49,9 @@
         <activity
             android:name=".retrofit.GankActivity"
             android:parentActivityName=".rx.RxMainActivity" />
+        <activity
+            android:name=".rx.RxActivity7"
+            android:parentActivityName=".rx.RxMainActivity" />
     </application>
 
 </manifest>
