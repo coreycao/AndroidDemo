@@ -5,20 +5,19 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_gank"
+        android:id="@+id/btn_gank3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get Raw Json Data" />
+        android:text="Get Observable Data" />
 
-    <ScrollView
+    <TextView
+        android:id="@+id/tv_gank3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/tv_gank"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_gank3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

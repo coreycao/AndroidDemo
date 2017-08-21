@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ucar.sycao.eventbus.FirstActivity;
+import com.ucar.sycao.retrofit.GankMainActivity;
 import com.ucar.sycao.rx.RxMainActivity;
 
 /**
@@ -16,32 +17,28 @@ import com.ucar.sycao.rx.RxMainActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnEventBus;
-    Button btnRxJava;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnEventBus = (Button)findViewById(R.id.btn_main_eventbus);
-        btnRxJava = (Button)findViewById(R.id.btn_main_rx);
-        btnEventBus.setOnClickListener(this);
-        btnRxJava.setOnClickListener(this);
-
+        findViewById(R.id.btn_main_eventbus).setOnClickListener(this);
+        findViewById(R.id.btn_main_rx).setOnClickListener(this);
+        findViewById(R.id.btn_main_retrofit).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_main_eventbus:
-                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                startActivity(new Intent(this, FirstActivity.class));
                 break;
-
             case R.id.btn_main_rx:
-                startActivity((new Intent(getApplicationContext(), RxMainActivity.class)));
+                startActivity((new Intent(this, RxMainActivity.class)));
                 break;
-
+            case R.id.btn_main_retrofit:
+                startActivity(new Intent(this, GankMainActivity.class));
+                break;
         }
     }
 }

@@ -5,20 +5,21 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/btn_gank"
+        android:id="@+id/btn_gank_main_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get Raw Json Data" />
+        android:text="gank1" />
 
-    <ScrollView
+    <Button
+        android:id="@+id/btn_gank_main_2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="gank2" />
 
-        <TextView
-            android:id="@+id/tv_gank"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </ScrollView>
-
+    <Button
+        android:id="@+id/btn_gank_main_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="gank3" />
 
 </LinearLayout>

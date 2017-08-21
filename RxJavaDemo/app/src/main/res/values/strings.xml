@@ -2,6 +2,7 @@
     <string name="app_name">AndroidDemo</string>
     <string name="main_event">EventBus Demo</string>
     <string name="main_rx">rxJava Demo</string>
+    <string name="main_retrofit">retrofit Demo</string>
 
     <string name="rx_1">Simple Color List</string>
     <string name="rx_2">Favorite Tv Shows</string>

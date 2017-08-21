@@ -46,10 +46,4 @@
         android:layout_height="wrap_content"
         android:text="@string/rx_7" />
 
-    <Button
-        android:id="@+id/btn_rx_main_8"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/rx_8" />
-
 </LinearLayout>

@@ -47,11 +47,22 @@
             android:name=".rx.RxActivity6"
             android:parentActivityName=".rx.RxMainActivity" />
         <activity
-            android:name=".retrofit.GankActivity"
-            android:parentActivityName=".rx.RxMainActivity" />
-        <activity
             android:name=".rx.RxActivity7"
             android:parentActivityName=".rx.RxMainActivity" />
+
+        <!-- demo activity for retrofit -->
+        <activity
+            android:name=".retrofit.GankMainActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".retrofit.GankActivity"
+            android:parentActivityName=".retrofit.GankMainActivity" />
+        <activity
+            android:name=".retrofit.GankActivity2"
+            android:parentActivityName=".retrofit.GankMainActivity" />
+        <activity
+            android:name=".retrofit.GankActivity3"
+            android:parentActivityName=".retrofit.GankMainActivity" />
     </application>
 
 </manifest>
