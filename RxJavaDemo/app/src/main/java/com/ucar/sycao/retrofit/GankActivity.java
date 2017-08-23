@@ -1,6 +1,5 @@
 package com.ucar.sycao.retrofit;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +25,6 @@ import retrofit2.Retrofit;
 public class GankActivity extends AppCompatActivity {
 
     TextView tvGank;
-    ProgressDialog progressDialog;
 
     final String pageSize = "10";
 
@@ -41,7 +39,6 @@ public class GankActivity extends AppCompatActivity {
             }
         });
         tvGank = (TextView) findViewById(R.id.tv_gank);
-        progressDialog = new ProgressDialog(this);
     }
 
     private void getData() {

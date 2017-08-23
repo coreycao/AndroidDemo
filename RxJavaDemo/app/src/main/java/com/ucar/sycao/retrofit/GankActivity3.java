@@ -114,6 +114,4 @@ public class GankActivity3 extends AppCompatActivity {
             disposable.dispose();
         }
     }
-
-
 }

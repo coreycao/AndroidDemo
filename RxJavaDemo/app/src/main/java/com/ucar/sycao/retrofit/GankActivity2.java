@@ -34,7 +34,6 @@ public class GankActivity2 extends AppCompatActivity {
     TextView tvGank;
     RecyclerView rvGank;
     SimpleStringAdapter simpleStringAdapter;
-    Disposable disposable;
     ProgressDialog progressDialog;
 
     final String pageSize = "10";
