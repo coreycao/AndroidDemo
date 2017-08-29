@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
                 .setAdapter(new ArrayAdapter<String>(
                         this, android.R.layout.simple_list_item_single_choice
                         , strings
-                ){
+                ) {
                     @NonNull
                     @Override
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-                        View itemView =  super.getView(position, convertView, parent);
+                        View itemView = super.getView(position, convertView, parent);
                         if (position == 0) {
                             ((TextView) itemView).setTextColor(getResources().getColor(R.color.colorAccent));
                         }

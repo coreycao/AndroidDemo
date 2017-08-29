@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by sycao on 2017/8/16.
+ * 试用 ConstraintLayout 布局
  */
 
 public class ConstraintActivity extends AppCompatActivity {
