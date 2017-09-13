@@ -1,33 +1,28 @@
 package com.corey.demo
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.Button
-import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by sycao on 2017/8/22.
  * Kotlin main activity
  */
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<Button>(R.id.btn_main_hello).setOnClickListener {
-            Toast.makeText(this, "makeText...", Toast.LENGTH_LONG).show()
-            sayHello(this, "sayHello...")
-            toast(this, "toast...")
-        }
+
+        btn_main_read.setOnClickListener({
+            toast(this, "read...")
+        })
+
+        btn_main_save.setOnClickListener({
+            toast(this, "save...")
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        })
     }
-}
-
-// 包级函数
-fun sayHello(context: Context, hello: String) {
-    Toast.makeText(context, hello, Toast.LENGTH_LONG).show()
-}
-
-// 函数拓展
-fun MainActivity.toast(context: Context, message: String) {
-    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 }
