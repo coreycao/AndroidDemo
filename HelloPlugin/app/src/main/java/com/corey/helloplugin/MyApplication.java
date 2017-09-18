@@ -7,7 +7,7 @@ import com.morgoo.droidplugin.PluginHelper;
 
 /**
  * Created by sycao on 2017/9/14.
- * 自定义 Applicatio，在这里注册并初始化 DroidPlugin
+ * 自定义 Application，在这里注册并初始化 DroidPlugin
  */
 
 public class MyApplication extends Application {
