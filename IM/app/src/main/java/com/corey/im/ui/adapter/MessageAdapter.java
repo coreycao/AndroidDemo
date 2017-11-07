@@ -1,4 +1,4 @@
-package com.corey.im.adapter;
+package com.corey.im.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.corey.im.R;
-import com.corey.im.entity.MessageEntity;
+import com.corey.im.ui.entity.MessageEntity;
 
 import java.util.List;
 

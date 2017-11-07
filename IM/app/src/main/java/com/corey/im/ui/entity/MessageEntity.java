@@ -1,4 +1,4 @@
-package com.corey.im.entity;
+package com.corey.im.ui.entity;
 
 /**
  * Created by sycao on 2017/11/6.

@@ -1,4 +1,4 @@
-package com.corey.im.activity;
+package com.corey.im.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.corey.im.R;
-import com.corey.im.adapter.MessageAdapter;
-import com.corey.im.entity.MessageEntity;
+import com.corey.im.ui.adapter.MessageAdapter;
+import com.corey.im.ui.entity.MessageEntity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.corey.im.adapter;
+package com.corey.im.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.corey.im.R;
-import com.corey.im.entity.ChatEntity;
+import com.corey.im.ui.entity.ChatEntity;
 
 import java.util.List;
 

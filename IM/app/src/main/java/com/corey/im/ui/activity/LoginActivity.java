@@ -1,4 +1,4 @@
-package com.corey.im.activity;
+package com.corey.im.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

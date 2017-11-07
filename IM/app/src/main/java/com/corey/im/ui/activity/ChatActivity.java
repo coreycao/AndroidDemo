@@ -1,4 +1,4 @@
-package com.corey.im.activity;
+package com.corey.im.ui.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.corey.im.R;
-import com.corey.im.adapter.ChatAdapter;
-import com.corey.im.entity.ChatEntity;
+import com.corey.im.ui.adapter.ChatAdapter;
+import com.corey.im.ui.entity.ChatEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_chat_list);
 
         chatAdapter = new ChatAdapter(this, getMockData());
-        lvChatList = (ListView) findViewById(R.id.lv_chat_list);
+        lvChatList = findViewById(R.id.lv_chat_list);
         lvChatList.setAdapter(chatAdapter);
         lvChatList.setOnItemClickListener(this);
     }
