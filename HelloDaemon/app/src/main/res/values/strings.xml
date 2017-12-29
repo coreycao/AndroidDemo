@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HelloDaemon</string>
+
+    <string name="btn_txt_start_service">start service</string>
+    <string name="btn_txt_stop_service">stop service</string>
+    <string name="btn_txt_bind_service">bind service</string>
+    <string name="btn_txt_unbind_service">unbind service</string>
+    <string name="btn_txt_daemon_service">start daemon</string>
+</resources>
