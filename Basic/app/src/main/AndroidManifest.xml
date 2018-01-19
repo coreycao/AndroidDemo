@@ -12,25 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
-
-        </activity>
-
-        <activity android:name=".ConstraintActivity">
-
-        </activity>
-
-        <activity android:name=".StatusBarActivity" />
-
-        <activity android:name=".NotificationActivity">
-
-        </activity>
-
-        <activity android:name=".PermissionActivity">
+        <activity
+            android:name=".ui.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.MainActivity">
+
+        </activity>
+
+        <activity android:name=".ui.ConstraintActivity">
+
+        </activity>
+
+        <activity android:name=".ui.StatusBarActivity" />
+
+        <activity android:name=".ui.NotificationActivity">
+
+        </activity>
+
+        <activity android:name=".ui.PermissionActivity">
+
         </activity>
 
 
