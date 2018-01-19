@@ -1,4 +1,4 @@
-package com.corey.basic;
+package com.corey.basic.ui;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+
+import com.corey.basic.R;
 
 /**
  * Created by Corey on 2017/8/29.

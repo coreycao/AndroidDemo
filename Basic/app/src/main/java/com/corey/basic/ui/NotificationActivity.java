@@ -1,6 +1,5 @@
-package com.corey.basic;
+package com.corey.basic.ui;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -10,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.corey.basic.R;
 
 /**
  * Created by sycao on 2017/10/24.
