@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidLayout</string>
+
+    <string name="txt_1">使用LinearLayout 的 weight 属性进行布局</string>
+    <string name="txt_2">利用一个 0dp 的 view 作为 divider 进行布局</string>
+    <string name="txt_3">同上，但请注意 layout_toLeftOf 与 layout_alignLeft 属性的差异</string>
+    <string name="txt_4">使用百分比布局</string>
+    <string name="txt_5">ConstraintLayout</string>
+    <string name="txt_6">FlexLayout</string>
+    <string name="txt_7">自定义布局</string>
+
+</resources>
