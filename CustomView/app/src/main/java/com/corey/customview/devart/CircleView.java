@@ -7,7 +7,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Scroller;
 
 import com.corey.customview.R;
 
@@ -22,6 +25,10 @@ public class CircleView extends View {
     private int mWidth = 200;
 
     private int mHeight = 200;
+
+    private int mLastX;
+
+    private int mLastY;
 
     private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -45,6 +52,8 @@ public class CircleView extends View {
 
     private void init() {
         mPaint.setColor(mColor);
+        mLastX = (int) getX();
+        mLastY = (int) getY();
     }
 
     @Override
@@ -77,5 +86,84 @@ public class CircleView extends View {
         int radius = Math.min(width, height) / 2;
 
         canvas.drawCircle(paddingLeft + width / 2, paddingTop + height / 2, radius, mPaint);
+    }
+
+    GestureDetector gestureDetector = new GestureDetector(this.getContext(), new GestureDetector.OnGestureListener() {
+        @Override
+        public boolean onDown(MotionEvent e) {
+            return false;
+        }
+
+        @Override
+        public void onShowPress(MotionEvent e) {
+
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            return false;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+            return false;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            return false;
+        }
+    });
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int x = (int) event.getRawX();
+        int y = (int) event.getRawY();
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int deltaX = x - mLastX;
+                int deltaY = y - mLastY;
+                int translationX = (int) (getTranslationX() + deltaX);
+                int translationY = (int) (getTranslationY() + deltaY);
+                setTranslationX(translationX);
+                setTranslationY(translationY);
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+            default:
+                break;
+        }
+
+        mLastX = x;
+        mLastY = y;
+
+        return true;
+//        return gestureDetector.onTouchEvent(event);
+    }
+
+    Scroller scroller = new Scroller(this.getContext());
+
+    @Override
+    public void computeScroll() {
+        super.computeScroll();
+        if (scroller.computeScrollOffset()) {
+            scrollTo(scroller.getCurrX(), scroller.getCurrY());
+            postInvalidate();
+        }
+    }
+
+    private void smoothScrollTo(int destX, int destY) {
+        int scrollX = getScrollX();
+        int delta = destX - scrollX;
+        scroller.startScroll(scrollX, 0, delta, 0, 1000);
+        invalidate();
     }
 }
