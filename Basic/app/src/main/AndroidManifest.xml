@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".MainActivity">
 
         </activity>
 
@@ -38,6 +38,18 @@
         <activity android:name=".ui.PermissionActivity">
 
         </activity>
+
+        <activity android:name=".service.ServiceActivity" />
+
+        <service
+            android:name=".service.NormalService"
+            android:exported="false" />
+        <service
+            android:name=".service.NormalIntentService"
+            android:exported="false" />
+        <service
+            android:name=".service.NormalBindService"
+            android:exported="false" />
 
 
     </application>

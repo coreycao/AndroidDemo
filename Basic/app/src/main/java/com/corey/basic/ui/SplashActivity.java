@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.corey.basic.R;
+import com.corey.basic.MainActivity;
 
 /**
  * Created by sycao on 2018/1/19.
