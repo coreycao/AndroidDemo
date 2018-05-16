@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="layout" />
 
     <Button
         android:id="@+id/btn_main_custom_et"
@@ -12,37 +17,9 @@
         android:text="custom edit text" />
 
     <Button
-        android:id="@+id/btn_move"
-        android:text="click to move"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <com.corey.customview.devart.CircleView
-        android:id="@+id/circle_view"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_margin="20dp"
-        android:background="@color/colorPrimary"
-        android:padding="20dp"
-        app:circle_color="@color/colorAccent" />
-
-    <LinearLayout
-        android:id="@+id/ly_ver"
+        android:id="@+id/btn_other"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"/>
-
-    <LinearLayout
-        android:id="@+id/ly_hor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"/>
-
-    <ViewStub
-        android:id="@+id/stub_hello"
-        android:inflatedId="@+id/stub_inflate"
-        android:layout="@layout/layout_sub"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:text="canvas" />
 
 </LinearLayout>

@@ -17,6 +17,12 @@
         </activity>
 
         <activity android:name=".edittext.EditTextActivity" />
+
+        <activity android:name=".gcssloop.CanvasActivity" />
+
+        <activity android:name=".layout_tips.LayoutActivity" />
+
+        <activity android:name=".devart.DevArtActivity" />
     </application>
 
 </manifest>
