@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.corey.basic.ipc.IPCActitivy;
+import com.corey.basic.lifecycle.FirstActivity;
 import com.corey.basic.service.ServiceActivity;
 import com.corey.basic.ui.StatusBarActivity;
 
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         list.add(StatusBarActivity.class);
 
         list.add(IPCActitivy.class);
+
+        list.add(FirstActivity.class);
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);

@@ -45,6 +45,9 @@
 
         <activity android:name=".ipc.messenger.MessengerActivity" />
 
+        <activity android:name=".lifecycle.FirstActivity" />
+        <activity android:name=".lifecycle.SecondActivity" />
+
         <service
             android:name=".service.NormalService"
             android:exported="false" />
