@@ -1,4 +1,4 @@
-package com.corey.basic;
+package com.corey.basic.ipc;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,18 +9,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.corey.basic.ipc.IPCActitivy;
-import com.corey.basic.service.ServiceActivity;
-import com.corey.basic.ui.StatusBarActivity;
+import com.corey.basic.ipc.messenger.MessengerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by sycao on 2017/8/14.
+ * Created by sycao on 2018/5/17.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class IPCActitivy extends AppCompatActivity {
+
+    private static final String TAG = "IPCActivity";
 
     List<Class<? extends AppCompatActivity>> list = new ArrayList<>();
 
@@ -28,11 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        list.add(ServiceActivity.class);
-
-        list.add(StatusBarActivity.class);
-
-        list.add(IPCActitivy.class);
+        list.add(MessengerActivity.class);
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
@@ -44,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, clazz));
+                    startActivity(new Intent(IPCActitivy.this, clazz));
                 }
             });
             linearLayout.addView(btn);

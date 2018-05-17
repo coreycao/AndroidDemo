@@ -41,6 +41,10 @@
 
         <activity android:name=".service.ServiceActivity" />
 
+        <activity android:name=".ipc.IPCActitivy" />
+
+        <activity android:name=".ipc.messenger.MessengerActivity" />
+
         <service
             android:name=".service.NormalService"
             android:exported="false" />
@@ -49,6 +53,15 @@
             android:exported="false" />
         <service
             android:name=".service.NormalBindService"
+            android:exported="false" />
+
+        <service
+            android:name=".ipc.messenger.MessengerService"
+            android:exported="false"
+            android:process=":remote" />
+
+        <service
+            android:name=".service.ForgroundService"
             android:exported="false" />
 
 
