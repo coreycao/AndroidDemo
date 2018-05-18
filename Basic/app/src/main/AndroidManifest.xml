@@ -47,6 +47,15 @@
 
         <activity android:name=".lifecycle.FirstActivity" />
         <activity android:name=".lifecycle.SecondActivity" />
+        <activity android:name=".ipc.provider.ProviderActivity" />
+        <activity
+            android:name=".launchmode.Launch1Activity"
+            android:launchMode="singleTask"
+            android:taskAffinity="io.github.coreycao" />
+        <activity
+            android:name=".launchmode.Launch2Activity"
+            android:launchMode="singleTask"
+            android:taskAffinity="io.github.coreycao" />
 
         <service
             android:name=".service.NormalService"
@@ -66,6 +75,12 @@
         <service
             android:name=".service.ForgroundService"
             android:exported="false" />
+        
+        <provider
+            android:authorities="com.corey.basic.bookprovider"
+            android:name=".ipc.provider.BookProvider"
+            android:permission="com.corey.basic.provider"
+            android:process=":provider"/>
 
 
     </application>

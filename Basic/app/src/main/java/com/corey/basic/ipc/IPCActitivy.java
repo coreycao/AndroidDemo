@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.corey.basic.ipc.messenger.MessengerActivity;
+import com.corey.basic.ipc.provider.ProviderActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class IPCActitivy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         list.add(MessengerActivity.class);
+        list.add(ProviderActivity.class);
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
