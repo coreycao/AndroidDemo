@@ -13,7 +13,7 @@ import com.corey.customview.R;
  * Created by sycao on 2017/11/1.
  */
 
-public class Base extends View {
+public class BaseCustomView extends View {
 
     Paint mPaint = new Paint();
 
@@ -24,7 +24,7 @@ public class Base extends View {
 
     RectF rectF = new RectF();
 
-    public Base(Context context) {
+    public BaseCustomView(Context context) {
         super(context);
     }
 
