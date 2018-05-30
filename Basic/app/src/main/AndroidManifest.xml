@@ -48,6 +48,7 @@
         <activity android:name=".lifecycle.FirstActivity" />
         <activity android:name=".lifecycle.SecondActivity" />
         <activity android:name=".ipc.provider.ProviderActivity" />
+        <activity android:name=".msg.HandlerActivity" />
         <activity
             android:name=".launchmode.Launch1Activity"
             android:launchMode="singleTask"
@@ -75,12 +76,12 @@
         <service
             android:name=".service.ForgroundService"
             android:exported="false" />
-        
+
         <provider
-            android:authorities="com.corey.basic.bookprovider"
             android:name=".ipc.provider.BookProvider"
+            android:authorities="com.corey.basic.bookprovider"
             android:permission="com.corey.basic.provider"
-            android:process=":provider"/>
+            android:process=":provider" />
 
 
     </application>
