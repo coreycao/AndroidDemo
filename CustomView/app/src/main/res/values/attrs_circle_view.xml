@@ -3,4 +3,10 @@
     <declare-styleable name="CircleView">
         <attr name="circle_color" format="color" />
     </declare-styleable>
+
+
+    <declare-styleable name="FlowLayout">
+        <attr name="verticalSpace" format="integer" />
+        <attr name="horizontalSpace" format="integer" />
+    </declare-styleable>
 </resources>
