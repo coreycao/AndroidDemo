@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.corey.basic.ipc.IPCActitivy;
 import com.corey.basic.launchmode.Launch1Activity;
 import com.corey.basic.lifecycle.FirstActivity;
+import com.corey.basic.msg.HandlerActivity;
 import com.corey.basic.service.ServiceActivity;
 import com.corey.basic.ui.StatusBarActivity;
 
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         list.add(FirstActivity.class);
 
         list.add(Launch1Activity.class);
+
+        list.add(HandlerActivity.class);
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
