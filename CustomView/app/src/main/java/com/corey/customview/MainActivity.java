@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_main_custom_et).setOnClickListener(this);
         findViewById(R.id.btn_layout).setOnClickListener(this);
         findViewById(R.id.btn_other).setOnClickListener(this);
+        findViewById(R.id.btn_zoom).setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_layout:
                 startActivity(new Intent(this, LayoutActivity.class));
+            case R.id.btn_zoom:
+                startActivity(new Intent(this, ZoomActivity.class));
         }
     }
 }
