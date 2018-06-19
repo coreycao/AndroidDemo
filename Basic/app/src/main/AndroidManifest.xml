@@ -50,6 +50,7 @@
         <activity android:name=".ipc.provider.ProviderActivity" />
         <activity android:name=".ipc.aidl.BookManagerActivity" />
         <activity android:name=".msg.HandlerActivity" />
+        <activity android:name=".touchevent.TouchActivity" />
         <activity
             android:name=".launchmode.Launch1Activity"
             android:launchMode="singleTask"

@@ -14,6 +14,7 @@ import com.corey.basic.launchmode.Launch1Activity;
 import com.corey.basic.lifecycle.FirstActivity;
 import com.corey.basic.msg.HandlerActivity;
 import com.corey.basic.service.ServiceActivity;
+import com.corey.basic.touchevent.TouchActivity;
 import com.corey.basic.ui.StatusBarActivity;
 
 import java.util.ArrayList;
@@ -42,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         list.add(Launch1Activity.class);
 
         list.add(HandlerActivity.class);
+
+        list.add(TouchActivity.class);
 
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
