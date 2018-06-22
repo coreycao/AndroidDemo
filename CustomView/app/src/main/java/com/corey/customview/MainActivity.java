@@ -41,8 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_layout:
                 startActivity(new Intent(this, LayoutActivity.class));
+                break;
             case R.id.btn_zoom:
                 startActivity(new Intent(this, ZoomActivity.class));
+                break;
         }
     }
 }

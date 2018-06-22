@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.corey.customview.view.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/detail_bg"/>
+
     <Button
         android:id="@+id/btn_layout"
         android:layout_width="match_parent"
