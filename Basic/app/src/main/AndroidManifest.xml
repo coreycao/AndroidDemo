@@ -60,6 +60,8 @@
             android:launchMode="singleTask"
             android:taskAffinity="io.github.coreycao" />
 
+        <activity android:name=".tv.TvTabActivity" />
+
         <service
             android:name=".service.NormalService"
             android:exported="false" />

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+  <com.corey.basic.tv.widget.NavigationTab
+      android:id="@+id/navitab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_centerVertical="true"
+      app:navi_text_color="@android:color/white"
+      app:navi_text_scale_ratio="1.1"
+      app:navi_text_size="22sp"
+      app:navi_text_space_margin="15"
+      />
+
+  <ViewStub
+      android:id="@+id/stub_tab_cursor"
+      android:layout_width="50dp"
+      android:layout_height="2dp"
+      android:layout_below="@id/navitab"
+      android:layout="@layout/layout_tab_cursor"
+      />
+
+  <TextView
+      android:id="@+id/tv_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      android:textColor="@android:color/white"
+      android:textSize="@dimen/text_size_medium"
+      />
+
+</merge>

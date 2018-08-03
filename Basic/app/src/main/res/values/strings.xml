@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Basic</string>
+  <string name="app_name">Basic</string>
+
+  <string-array name="tabs_personal_centre">
+    <item>Item1</item>
+    <item>Item2</item>
+    <item>Item3</item>
+    <item>Item4</item>
+    <item>Item5</item>
+  </string-array>
+
+  <string-array name="tabs_movie_detail">
+    <item>Item1</item>
+    <item>Item2&amp;Item3</item>
+    <item>Item4</item>
+  </string-array>
 </resources>
