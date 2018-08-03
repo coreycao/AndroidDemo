@@ -22,33 +22,33 @@ import java.util.List;
 
 public class IPCActitivy extends AppCompatActivity {
 
-    private static final String TAG = "IPCActivity";
+  private static final String TAG = "IPCActivity";
 
-    List<Class<? extends AppCompatActivity>> list = new ArrayList<>();
+  List<Class<? extends AppCompatActivity>> list = new ArrayList<>();
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        list.add(MessengerActivity.class);
-        list.add(ProviderActivity.class);
-        list.add(BookManagerActivity.class);
+    list.add(MessengerActivity.class);
+    list.add(ProviderActivity.class);
+    list.add(BookManagerActivity.class);
 
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        for (final Class clazz : list) {
-            Button btn = new Button(this);
-            btn.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-            btn.setText(clazz.getSimpleName());
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(IPCActitivy.this, clazz));
-                }
-            });
-            linearLayout.addView(btn);
+    LinearLayout linearLayout = new LinearLayout(this);
+    linearLayout.setOrientation(LinearLayout.VERTICAL);
+    for (final Class clazz : list) {
+      Button btn = new Button(this);
+      btn.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT));
+      btn.setText(clazz.getSimpleName());
+      btn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          startActivity(new Intent(IPCActitivy.this, clazz));
         }
-        setContentView(linearLayout);
+      });
+      linearLayout.addView(btn);
     }
+    setContentView(linearLayout);
+  }
 }

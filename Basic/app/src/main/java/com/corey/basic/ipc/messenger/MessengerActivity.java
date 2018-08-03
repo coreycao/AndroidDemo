@@ -28,122 +28,125 @@ import java.lang.ref.WeakReference;
 
 public class MessengerActivity extends AppCompatActivity {
 
-    private static final String TAG = "MessengerActivity";
+  private static final String TAG = "MessengerActivity";
+
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    LinearLayout ll = new LinearLayout(this);
+    ll.setOrientation(LinearLayout.VERTICAL);
+    Button btnBind = new Button(this);
+    btnBind.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT));
+    btnBind.setText("Bind");
+    btnBind.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Log.d(TAG, "bind");
+        bindService(new Intent(MessengerActivity.this, MessengerService.class),
+            connection, Context.BIND_AUTO_CREATE);
+      }
+    });
+    ll.addView(btnBind);
+
+    Button btnUnBind = new Button(this);
+    btnUnBind.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT));
+    btnUnBind.setText("UnBind");
+    btnUnBind.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (messenger != null) {
+          Log.d(TAG, "unbind");
+          messenger = null;
+          unbindService(connection);
+        } else {
+          Log.d(TAG, "unbind error");
+        }
+      }
+    });
+    ll.addView(btnUnBind);
+
+    Button btnSend = new Button(this);
+    btnSend.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT));
+    btnSend.setText("Send Msg");
+    btnSend.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Log.d(TAG, "send message");
+        sendMessage();
+      }
+    });
+    ll.addView(btnSend);
+
+    tvContent = new TextView(this);
+    tvContent.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT));
+    ll.addView(tvContent);
+
+    setContentView(ll);
+
+    clientMessenger = new Messenger(new MessengerActivity.ClientHandler(this));
+  }
+
+  TextView tvContent;
+
+  public void setText(String txt) {
+    if (tvContent != null) {
+      tvContent.setText(txt);
+    }
+  }
+
+  Messenger messenger;
+
+  ServiceConnection connection = new ServiceConnection() {
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+      messenger = new Messenger(service);
+    }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onServiceDisconnected(ComponentName name) {
+      messenger = null;
+    }
+  };
 
-        LinearLayout ll = new LinearLayout(this);
-        ll.setOrientation(LinearLayout.VERTICAL);
-        Button btnBind = new Button(this);
-        btnBind.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        btnBind.setText("Bind");
-        btnBind.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "bind");
-                bindService(new Intent(MessengerActivity.this, MessengerService.class),
-                        connection, Context.BIND_AUTO_CREATE);
-            }
-        });
-        ll.addView(btnBind);
+  private void sendMessage() {
+    if (messenger != null) {
+      Message msg = Message.obtain();
+      msg.what = 0x01;
+      msg.replyTo = clientMessenger;
+      try {
+        messenger.send(msg);
+      } catch (RemoteException e) {
+        e.printStackTrace();
+      }
+    }
+  }
 
-        Button btnUnBind = new Button(this);
-        btnUnBind.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        btnUnBind.setText("UnBind");
-        btnUnBind.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (messenger != null) {
-                    Log.d(TAG, "unbind");
-                    messenger = null;
-                    unbindService(connection);
-                } else {
-                    Log.d(TAG, "unbind error");
-                }
-            }
-        });
-        ll.addView(btnUnBind);
+  Messenger clientMessenger;
 
-        Button btnSend = new Button(this);
-        btnSend.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        btnSend.setText("Send Msg");
-        btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "send message");
-                sendMessage();
-            }
-        });
-        ll.addView(btnSend);
+  static class ClientHandler extends Handler {
 
-        tvContent = new TextView(this);
-        tvContent.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        ll.addView(tvContent);
+    WeakReference<Activity> activityWeakReference;
 
-        setContentView(ll);
-
-        clientMessenger = new Messenger(new MessengerActivity.ClientHandler(this));
-
+    ClientHandler(Activity activity) {
+      activityWeakReference = new WeakReference<>(activity);
     }
 
-    TextView tvContent;
-
-    public void setText(String txt){
-        if (tvContent!=null){
-            tvContent.setText(txt);
-        }
+    @Override
+    public void handleMessage(Message msg) {
+      super.handleMessage(msg);
+      switch (msg.what) {
+        case 0x02:
+          Log.d(TAG, "client receive message, and the content is:" +
+              msg.getData().getString("REPLY"));
+          MessengerActivity activity = (MessengerActivity) activityWeakReference.get();
+          activity.setText(msg.getData().getString("REPLY"));
+          break;
+      }
     }
-
-    Messenger messenger;
-
-    ServiceConnection connection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            messenger = new Messenger(service);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            messenger = null;
-        }
-    };
-
-    private void sendMessage() {
-        if (messenger != null) {
-            Message msg = Message.obtain();
-            msg.what = 0x01;
-            msg.replyTo = clientMessenger;
-            try {
-                messenger.send(msg);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    Messenger clientMessenger;
-
-    static class ClientHandler extends Handler {
-
-        WeakReference<Activity> activityWeakReference;
-
-        ClientHandler(Activity activity){
-            activityWeakReference = new WeakReference<>(activity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 0x02:
-                    Log.d(TAG, "client receive message, and the content is:" +
-                            msg.getData().getString("REPLY"));
-                    MessengerActivity activity = (MessengerActivity)activityWeakReference.get();
-                    activity.setText(msg.getData().getString("REPLY"));
-                    break;
-            }
-        }
-    }
+  }
 }

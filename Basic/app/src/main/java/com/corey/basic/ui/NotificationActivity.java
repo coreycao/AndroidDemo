@@ -19,41 +19,44 @@ import com.corey.basic.R;
 
 public class NotificationActivity extends AppCompatActivity {
 
-    NotificationManager notificationManager;
-    NotificationCompat.Builder builder;
-    final int notificationId = 1;
+  NotificationManager notificationManager;
+  NotificationCompat.Builder builder;
+  final int notificationId = 1;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_notification);
 
-        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        builder = new NotificationCompat.Builder(this);
+    notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+    builder = new NotificationCompat.Builder(this);
 
-        findViewById(R.id.btn_notification_send).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendNotification();
-            }
-        });
-    }
+    findViewById(R.id.btn_notification_send).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        sendNotification();
+      }
+    });
+  }
 
-    private void sendNotification() {
-        notificationManager.cancel(notificationId);
-        PendingIntent pi = PendingIntent.getActivity(this, 1, new Intent(this, StatusBarActivity.class), PendingIntent.FLAG_ONE_SHOT);
-        builder.setContentTitle("Hello:")
-                .setContentText("This is a secret message.")
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-                .setContentIntent(pi)
-//                .setFullScreenIntent(pi,true)
-                .setTicker("xxx")
-                .addAction(new NotificationCompat.Action(R.mipmap.ic_launcher_round, "确定",
-                        PendingIntent.getActivity(this, 1, new Intent(this, StatusBarActivity.class), PendingIntent.FLAG_ONE_SHOT)))
-                .addAction(new NotificationCompat.Action(R.mipmap.ic_launcher_round, "取消",
-                        PendingIntent.getActivity(this, 1, new Intent(this, ConstraintActivity.class), PendingIntent.FLAG_ONE_SHOT)));
-        notificationManager.notify(notificationId, builder.build());
-    }
+  private void sendNotification() {
+    notificationManager.cancel(notificationId);
+    PendingIntent pi = PendingIntent.getActivity(this, 1, new Intent(this, StatusBarActivity.class),
+        PendingIntent.FLAG_ONE_SHOT);
+    builder.setContentTitle("Hello:")
+        .setContentText("This is a secret message.")
+        .setSmallIcon(R.mipmap.ic_launcher)
+        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+        .setContentIntent(pi)
+        //                .setFullScreenIntent(pi,true)
+        .setTicker("xxx")
+        .addAction(new NotificationCompat.Action(R.mipmap.ic_launcher_round, "确定",
+            PendingIntent.getActivity(this, 1, new Intent(this, StatusBarActivity.class),
+                PendingIntent.FLAG_ONE_SHOT)))
+        .addAction(new NotificationCompat.Action(R.mipmap.ic_launcher_round, "取消",
+            PendingIntent.getActivity(this, 1, new Intent(this, ConstraintActivity.class),
+                PendingIntent.FLAG_ONE_SHOT)));
+    notificationManager.notify(notificationId, builder.build());
+  }
 }

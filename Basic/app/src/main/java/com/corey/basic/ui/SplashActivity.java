@@ -15,17 +15,17 @@ import com.corey.basic.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // avoid calling setContentView method
-        // setContentView(R.layout.activity_splash);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                finish();
-            }
-        }, 1000);
-    }
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    // avoid calling setContentView method
+    // setContentView(R.layout.activity_splash);
+    new Handler().postDelayed(new Runnable() {
+      @Override
+      public void run() {
+        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        finish();
+      }
+    }, 1000);
+  }
 }

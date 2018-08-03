@@ -14,5 +14,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Inherited
 public @interface From {
-    int value() default 1;
+  int value() default 1;
 }

@@ -17,51 +17,52 @@ import android.widget.Toast;
 
 public class TouchActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Button btnGo = new Button(this);
-        btnGo.setText("touch me");
-        btnGo.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        btnGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(TouchActivity.this, "click me success", Toast.LENGTH_SHORT).show();
-            }
-        });
-        setContentView(btnGo);
-        expandViewTouchDelegate(btnGo, 0, 500, 0, 0);
-        btnGo.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Toast.makeText(TouchActivity.this, "touch me success", Toast.LENGTH_SHORT).show();
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    Button btnGo = new Button(this);
+    btnGo.setText("touch me");
+    btnGo.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT));
+    btnGo.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Toast.makeText(TouchActivity.this, "click me success", Toast.LENGTH_SHORT).show();
+      }
+    });
+    setContentView(btnGo);
+    expandViewTouchDelegate(btnGo, 0, 500, 0, 0);
+    btnGo.setOnTouchListener(new View.OnTouchListener() {
+      @Override
+      public boolean onTouch(View v, MotionEvent event) {
+        Toast.makeText(TouchActivity.this, "touch me success", Toast.LENGTH_SHORT).show();
 
-                return true;
-            }
-        });
-    }
+        return true;
+      }
+    });
+  }
 
-    public static void expandViewTouchDelegate(final View view, final int top,
-                                               final int bottom, final int left, final int right) {
+  public static void expandViewTouchDelegate(final View view, final int top,
+      final int bottom, final int left, final int right) {
 
-        ((View) view.getParent()).post(new Runnable() {
-            @Override
-            public void run() {
-                Rect bounds = new Rect();
-                view.setEnabled(true);
-                view.getHitRect(bounds);
+    ((View) view.getParent()).post(new Runnable() {
+      @Override
+      public void run() {
+        Rect bounds = new Rect();
+        view.setEnabled(true);
+        view.getHitRect(bounds);
 
-                bounds.top -= top;
-                bounds.bottom += bottom;
-                bounds.left -= left;
-                bounds.right += right;
+        bounds.top -= top;
+        bounds.bottom += bottom;
+        bounds.left -= left;
+        bounds.right += right;
 
-                TouchDelegate touchDelegate = new TouchDelegate(bounds, view);
+        TouchDelegate touchDelegate = new TouchDelegate(bounds, view);
 
-                if (View.class.isInstance(view.getParent())) {
-                    ((View) view.getParent()).setTouchDelegate(touchDelegate);
-                }
-            }
-        });
-    }
+        if (View.class.isInstance(view.getParent())) {
+          ((View) view.getParent()).setTouchDelegate(touchDelegate);
+        }
+      }
+    });
+  }
 }

@@ -11,14 +11,14 @@ import android.support.annotation.Nullable;
 
 public class NormalIntentService extends IntentService {
 
-    private static final String intentName = NormalIntentService.class.getSimpleName();
+  private static final String intentName = NormalIntentService.class.getSimpleName();
 
-    public NormalIntentService() {
-        super(intentName);
-    }
+  public NormalIntentService() {
+    super(intentName);
+  }
 
-    @Override
-    protected void onHandleIntent(@Nullable Intent intent) {
+  @Override
+  protected void onHandleIntent(@Nullable Intent intent) {
 
-    }
+  }
 }

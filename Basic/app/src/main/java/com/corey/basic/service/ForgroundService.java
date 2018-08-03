@@ -15,42 +15,42 @@ import com.corey.basic.R;
 
 public class ForgroundService extends Service {
 
-    private static final String TAG = ForgroundService.class.getSimpleName();
+  private static final String TAG = ForgroundService.class.getSimpleName();
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Log.d(TAG, "onCreate");
-    }
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    Log.d(TAG, "onCreate");
+  }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        int code = intent.getIntExtra("actionCode", 0);
-        if (code == 1) {
-            stopForeground(true);
-        } else if (code == 0) {
-            createNotification();
-        }
-        return super.onStartCommand(intent, flags, startId);
+  @Override
+  public int onStartCommand(Intent intent, int flags, int startId) {
+    int code = intent.getIntExtra("actionCode", 0);
+    if (code == 1) {
+      stopForeground(true);
+    } else if (code == 0) {
+      createNotification();
     }
+    return super.onStartCommand(intent, flags, startId);
+  }
 
-    private void createNotification() {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
-        builder.setSmallIcon(R.mipmap.ic_launcher)
-                .setShowWhen(true)
-                .setContentTitle("this is a title");
-        startForeground(0x01, builder.build());
-    }
+  private void createNotification() {
+    NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+    builder.setSmallIcon(R.mipmap.ic_launcher)
+        .setShowWhen(true)
+        .setContentTitle("this is a title");
+    startForeground(0x01, builder.build());
+  }
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+  @Nullable
+  @Override
+  public IBinder onBind(Intent intent) {
+    return null;
+  }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.d(TAG, "onDestroy");
-    }
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    Log.d(TAG, "onDestroy");
+  }
 }

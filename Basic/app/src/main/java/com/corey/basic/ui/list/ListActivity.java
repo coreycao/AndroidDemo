@@ -9,7 +9,6 @@ import android.widget.ListView;
 
 public class ListActivity extends AppCompatActivity {
 
-    private void init(){
-    }
-
+  private void init() {
+  }
 }

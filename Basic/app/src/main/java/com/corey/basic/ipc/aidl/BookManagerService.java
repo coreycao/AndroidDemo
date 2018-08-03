@@ -17,34 +17,34 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class BookManagerService extends Service {
 
-    private Binder mBinder = new IBookManager.Stub() {
-        @Override
-        public List<Book> getBookList() throws RemoteException {
-            return bookList;
-        }
-
-        @Override
-        public void addBook(Book book) throws RemoteException {
-            bookList.add(book);
-        }
-    };
-
-    CopyOnWriteArrayList<Book> bookList = new CopyOnWriteArrayList<>();
-
-    private static final String TAG = BookManagerService.class.getSimpleName();
-
+  private Binder mBinder = new IBookManager.Stub() {
     @Override
-    public void onCreate() {
-        Log.d(TAG,"onCreate");
-        super.onCreate();
-        bookList.add(new Book(1, "java"));
-        bookList.add(new Book(2, "android"));
+    public List<Book> getBookList() throws RemoteException {
+      return bookList;
     }
 
-    @Nullable
     @Override
-    public IBinder onBind(Intent intent) {
-        Log.d(TAG,"onBind");
-        return mBinder;
+    public void addBook(Book book) throws RemoteException {
+      bookList.add(book);
     }
+  };
+
+  CopyOnWriteArrayList<Book> bookList = new CopyOnWriteArrayList<>();
+
+  private static final String TAG = BookManagerService.class.getSimpleName();
+
+  @Override
+  public void onCreate() {
+    Log.d(TAG, "onCreate");
+    super.onCreate();
+    bookList.add(new Book(1, "java"));
+    bookList.add(new Book(2, "android"));
+  }
+
+  @Nullable
+  @Override
+  public IBinder onBind(Intent intent) {
+    Log.d(TAG, "onBind");
+    return mBinder;
+  }
 }

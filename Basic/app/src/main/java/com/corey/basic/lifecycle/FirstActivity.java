@@ -16,26 +16,27 @@ import com.corey.basic.base.BaseActivity;
 
 public class FirstActivity extends BaseActivity {
 
-    private final static String TAG = FirstActivity.class.getSimpleName();
+  private final static String TAG = FirstActivity.class.getSimpleName();
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        LinearLayout ll = new LinearLayout(this);
-        ll.setOrientation(LinearLayout.VERTICAL);
-        Button btnGo = new Button(this);
-        btnGo.setText("go to second");
-        btnGo.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        btnGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(FirstActivity.this, SecondActivity.class));
-            }
-        });
+    LinearLayout ll = new LinearLayout(this);
+    ll.setOrientation(LinearLayout.VERTICAL);
+    Button btnGo = new Button(this);
+    btnGo.setText("go to second");
+    btnGo.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT));
+    btnGo.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(FirstActivity.this, SecondActivity.class));
+      }
+    });
 
-        ll.addView(btnGo);
+    ll.addView(btnGo);
 
-        setContentView(ll);
-    }
+    setContentView(ll);
+  }
 }

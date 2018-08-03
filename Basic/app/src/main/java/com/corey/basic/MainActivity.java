@@ -8,15 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
 import com.corey.basic.ipc.IPCActitivy;
 import com.corey.basic.launchmode.Launch1Activity;
 import com.corey.basic.lifecycle.FirstActivity;
 import com.corey.basic.msg.HandlerActivity;
 import com.corey.basic.service.ServiceActivity;
 import com.corey.basic.touchevent.TouchActivity;
+import com.corey.basic.tv.TvTabActivity;
 import com.corey.basic.ui.StatusBarActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,41 +25,43 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<Class<? extends AppCompatActivity>> list = new ArrayList<>();
+  List<Class<? extends AppCompatActivity>> list = new ArrayList<>();
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
 
-        list.add(ServiceActivity.class);
+    list.add(TvTabActivity.class);
 
-        list.add(StatusBarActivity.class);
+    list.add(ServiceActivity.class);
 
-        list.add(IPCActitivy.class);
+    list.add(StatusBarActivity.class);
 
-        list.add(FirstActivity.class);
+    list.add(IPCActitivy.class);
 
-        list.add(Launch1Activity.class);
+    list.add(FirstActivity.class);
 
-        list.add(HandlerActivity.class);
+    list.add(Launch1Activity.class);
 
-        list.add(TouchActivity.class);
+    list.add(HandlerActivity.class);
 
-        LinearLayout linearLayout = new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        for (final Class clazz : list) {
-            Button btn = new Button(this);
-            btn.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-            btn.setText(clazz.getSimpleName());
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, clazz));
-                }
-            });
-            linearLayout.addView(btn);
+    list.add(TouchActivity.class);
+
+    LinearLayout linearLayout = new LinearLayout(this);
+    linearLayout.setOrientation(LinearLayout.VERTICAL);
+    for (final Class clazz : list) {
+      Button btn = new Button(this);
+      btn.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+          ViewGroup.LayoutParams.WRAP_CONTENT));
+      btn.setText(clazz.getSimpleName());
+      btn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          startActivity(new Intent(MainActivity.this, clazz));
         }
-        setContentView(linearLayout);
+      });
+      linearLayout.addView(btn);
     }
+    setContentView(linearLayout);
+  }
 }

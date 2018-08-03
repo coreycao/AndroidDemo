@@ -17,40 +17,46 @@ import android.widget.Button;
 
 public class ProviderActivity extends AppCompatActivity {
 
-    private static final String TAG = "ProviderActivity";
+  private static final String TAG = "ProviderActivity";
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Button btnGet = new Button(this);
-        btnGet.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        btnGet.setText("get");
-        btnGet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                qureyByContentPrivider();
-            }
-        });
-        setContentView(btnGet);
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    Button btnGet = new Button(this);
+    btnGet.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT));
+    btnGet.setText("get");
+    btnGet.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        qureyByContentPrivider();
+      }
+    });
+    setContentView(btnGet);
+  }
+
+  private void qureyByContentPrivider() {
+    Uri bookUri = Uri.parse("content://com.corey.basic.bookprovider/book");
+    ContentValues contentValues = new ContentValues();
+    contentValues.put("_id", 6);
+    contentValues.put("name", "weex");
+    getContentResolver().insert(bookUri, contentValues);
+    Cursor bookCursor =
+        getContentResolver().query(bookUri, new String[] { "_id", "name" }, null, null, null);
+    while (bookCursor.moveToNext()) {
+      Log.d(TAG, "book:" + bookCursor.getInt(0) + "|" + bookCursor.getString(1));
     }
+    bookCursor.close();
 
-    private void qureyByContentPrivider() {
-        Uri bookUri = Uri.parse("content://com.corey.basic.bookprovider/book");
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("_id", 6);
-        contentValues.put("name", "weex");
-        getContentResolver().insert(bookUri, contentValues);
-        Cursor bookCursor = getContentResolver().query(bookUri, new String[]{"_id", "name"}, null, null, null);
-        while (bookCursor.moveToNext()) {
-            Log.d(TAG, "book:" + bookCursor.getInt(0) + "|" + bookCursor.getString(1));
-        }
-        bookCursor.close();
-
-        Uri userUri = Uri.parse("content://com.corey.basic.bookprovider/user");
-        Cursor userCursor = getContentResolver().query(userUri, new String[]{"_id", "name", "sex"}, null, null, null);
-        while (userCursor.moveToNext()) {
-            Log.d(TAG, "user:" + userCursor.getInt(0) + "|" + userCursor.getString(1) + "|" + userCursor.getInt(2));
-        }
-        userCursor.close();
+    Uri userUri = Uri.parse("content://com.corey.basic.bookprovider/user");
+    Cursor userCursor =
+        getContentResolver().query(userUri, new String[] { "_id", "name", "sex" }, null, null,
+            null);
+    while (userCursor.moveToNext()) {
+      Log.d(TAG,
+          "user:" + userCursor.getInt(0) + "|" + userCursor.getString(1) + "|" + userCursor.getInt(
+              2));
     }
+    userCursor.close();
+  }
 }

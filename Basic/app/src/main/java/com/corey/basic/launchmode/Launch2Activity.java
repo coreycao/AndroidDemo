@@ -15,18 +15,19 @@ import com.corey.basic.MainActivity;
  */
 
 public class Launch2Activity extends AppCompatActivity {
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Button btnGo = new Button(this);
-        btnGo.setText("main");
-        btnGo.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        btnGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Launch2Activity.this, MainActivity.class));
-            }
-        });
-        setContentView(btnGo);
-    }
+  @Override
+  protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    Button btnGo = new Button(this);
+    btnGo.setText("main");
+    btnGo.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+        ViewGroup.LayoutParams.WRAP_CONTENT));
+    btnGo.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(Launch2Activity.this, MainActivity.class));
+      }
+    });
+    setContentView(btnGo);
+  }
 }
