@@ -72,10 +72,11 @@ public class RxjActivity1 extends AppCompatActivity {
         .doOnError(throwable -> {
               Log.e(TAG, "doOnError...");
               showErrorMessage();
-              hideLoading();
             }
         )
+        .doOnDispose(()->Log.d(TAG,"doOnDisposed..."))
         .doOnComplete(() -> Log.d(TAG, "doOnComplete..."))
+        .doFinally(this::hideLoading)
         .subscribe(strings -> Log.d(TAG, "onNext..."),
             throwable -> Log.d(TAG, "onError..."),
             () -> Log.d(TAG, "onComplete..."),
@@ -85,7 +86,6 @@ public class RxjActivity1 extends AppCompatActivity {
 
   private void showList(List<String> strings) {
     Log.d(TAG, "doOnNext...");
-    hideLoading();
     listAdapter = new ArrayAdapter<>(RxjActivity1.this,
         android.R.layout.simple_list_item_1, strings);
     listView.setAdapter(listAdapter);

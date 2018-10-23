@@ -1,7 +1,6 @@
 package me.demo.rx.rxj;
 
 import android.os.Bundle;
-import android.support.annotation.CheckResult;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -51,9 +50,10 @@ public class RxjActivity6 extends AppCompatActivity {
         .observeOn(AndroidSchedulers.mainThread())
         .compose(AndroidLifecycle.createLifecycleProvider(this).bindToLifecycle())
         .map(this::mapping2TitleList)
-        .subscribe(this::showList,
-            throwable -> Log.e(TAG,"onError...")
-        );
+        .doOnDispose(()->Log.d(TAG,"doOnDisposed..."))
+        .doOnNext(this::showList)
+        .doOnError(throwable -> Log.e(TAG,"doOnError"))
+        .subscribe();
   }
 
   private List<String> mapping2TitleList(Article article) {
@@ -72,7 +72,7 @@ public class RxjActivity6 extends AppCompatActivity {
   }
 
   /**
-   * RxLifecycle 能够保证
+   * RxLifecycle 能够保证在合适的生命周期取消订阅
    */
   @Override protected void onDestroy() {
     super.onDestroy();

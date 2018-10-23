@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import com.trello.lifecycle2.android.lifecycle.AndroidLifecycle;
 import corey.me.helloagera.R;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -50,9 +51,11 @@ public class RxjActivity4 extends AppCompatActivity {
         .flatMap(aLong -> service.getArticle(aLong.intValue()))
         .map(this::mapping2TitleList)
         .subscribeOn(Schedulers.io())
+        .compose(AndroidLifecycle.createLifecycleProvider(this).bindToLifecycle())
         .observeOn(AndroidSchedulers.mainThread())
         .doOnNext(this::showList)
         .doOnError(throwable -> Log.e(TAG, "doOnError.."))
+        .doOnDispose(()->Log.d(TAG,"doOnDispose..."))
         .subscribe();
   }
 
