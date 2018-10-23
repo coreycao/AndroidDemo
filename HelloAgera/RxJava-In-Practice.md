@@ -98,7 +98,8 @@ Android 提供的这些机制和工具已经能够完成我们项目开发中的
       )
       .subscribe();
 ```
-完整的代码请参考 RxjActivity1。
+完整的代码请参考 [RxjActivity1](https://github.com/coreycao/AndroidDemo/blob/master/HelloAgera/app/src/main/java/me/demo/rx/rxj/RxjActivity1.java)。
+
 可见，一条链式地调用下来，便逻辑清晰地实现了数据请求、数据处理、线程切换、UI 逻辑、异常处理等需求。
 
 ### 使用 Zip 操作符实现多异步请求合并处理
@@ -146,7 +147,7 @@ RxJava 提供了丰富的操作符来对 Observable 进行各种处理，这些�
     return titles;
   }
 ```
-完整的代码请参考 RxjActivity2。
+完整的代码请参考 [RxjActivity2](https://github.com/coreycao/AndroidDemo/blob/master/HelloAgera/app/src/main/java/me/demo/rx/rxj/RxjActivity2.java)。
 
 
 ### 使用 FlatMap 实现多异步请求连续调用
@@ -155,6 +156,7 @@ RxJava 提供了丰富的操作符来对 Observable 进行各种处理，这些�
 - token鉴权：请求获取token -> 使用该token进一步去请求其他一些接口
 - 上传头像：从本地存储中解析图片 -> 将该图片上传 -> 上传成功后更新用户信息
 - 等等...
+
 这些场景中，多个异步的网络请求之间有前后的依赖关系，因此若用最基本的 Java 代码来实现，则避免不了要写出复杂的多层 callback 层层嵌套的代码，代码冗余且不易于维护。使用 RxJava 则逻辑清晰，基本的示例如下：
 
 ```Java
@@ -180,6 +182,8 @@ RxJava 提供了丰富的操作符来对 Observable 进行各种处理，这些�
   }
 ```
 
+完整的代码请参考 [RxjActivity3](https://github.com/coreycao/AndroidDemo/blob/master/HelloAgera/app/src/main/java/me/demo/rx/rxj/RxjActivity3.java)
+
 ### 使用 interval 实现轮询
 
 Android 开发中还有许多场景需要我们轮询地去进行一个异步操作，比如在一些二维码支付的页面，需要轮询地去请求一个接口来判断用户是否支付成功。我们可以使用 Handler#postDelay 来实现轮询的操作，当然用 RxJava 亦可以简洁明了地实现轮询操作。
@@ -199,7 +203,8 @@ RxJava 中的 IntervalXXX 系列操作符能够按照我们设定的参数周期
   }
 ```
 此处用到了 intervalRange 操作符，传入的各项参数的意义为：以3秒为间隔，周期地发送数字1 - 5，且首次发送没有延迟。具体的使用可以参考相关文档。
-完整代码请参考 RxjActivity4
+
+完整代码请参考 [RxjActivity4](https://github.com/coreycao/AndroidDemo/blob/master/HelloAgera/app/src/main/java/me/demo/rx/rxj/RxjActivity4.java)
 
 ### 不使用 Retrofit，将传统的回调式网络请求包装为 Observable
 
@@ -254,6 +259,8 @@ public class ArticleModel {
           .subscribe()
 ```
 
+完整代码请参考 [RxjActivity5](https://github.com/coreycao/AndroidDemo/blob/master/HelloAgera/app/src/main/java/me/demo/rx/rxj/RxjActivity5.java)
+
 ### 使用 RxLifeCycle 控制事件流的生命周期
 
 使用 RxJava 进行异步操作，需要良好地控制事件流的生命周期，即及时地结束事件流的发送或者取消订阅，否则在客户端开发中很容易发生内存泄漏。
@@ -293,6 +300,8 @@ public class ArticleModel {
 ```
 LifecycleProvider 可以有多种，这里选择了 Google 官方推出的架构组件 Lifecycle。
 
+完整代码请参考 [RxjActivity6](https://github.com/coreycao/AndroidDemo/blob/master/HelloAgera/app/src/main/java/me/demo/rx/rxj/RxjActivity6.java)
+
 ## Sum
 
 本文主要演示了 RxJava 在 Android 开发中的一些网络异步操作的实现，这些场景有：
@@ -302,5 +311,6 @@ LifecycleProvider 可以有多种，这里选择了 Google 官方推出的架构
 - 使用 interval 实现轮询
 - 不使用 Retrofit，将传统的回调式网络请求包装为 Observable
 - 使用 RxLifeCycle 控制事件流的生命周期
+
 可见，使用 RxJava 能够方便地实现很多复杂的场景，于此同时还依旧能够保持逻辑的清晰和代码的可维护性；RxJava 处理异步操作虽然有内存泄漏的风险，但是已经有成熟的工具能够解决生命周期相关的问题；RxJava 不是仅仅能够配合 Retrofit 这样的工具库来使用，我们可以通过改造传统的回调式网络请求也能够脱离 Retrofit 来使用 RxJava，也可以自行创建 Observable 来将其应用到更多的场景中。
 
