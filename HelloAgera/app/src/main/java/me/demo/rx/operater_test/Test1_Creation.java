@@ -5,7 +5,6 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -23,7 +22,7 @@ public class Test1_Creation {
   private static Disposable disposable;
 
   public static void main(String[] args) {
-    //test_just();
+    test_just();
     //test_create();
     //test_create_onError();
     //test_fromArray();
@@ -32,8 +31,9 @@ public class Test1_Creation {
     //test_fromFuture();
     //test_defer();
     //test_range();
-    test_interval();
+    //test_interval();
     //test_interval_range();
+    //test_timer();
     //test_never();
     //test_empty();
     //test_error();
@@ -79,7 +79,7 @@ public class Test1_Creation {
    */
   private static void test_fromArray() {
     Integer[] ints = new Integer[] { 1, 2, 3 };
-    String[] strings = new String[] { "h", "e", "l", "l", "o" };
+    int[] primitiveInts = new int[] { 1, 2, 3 };
     disposable = Observable.fromArray(ints)
         .subscribe(System.out::println);
   }
@@ -103,6 +103,10 @@ public class Test1_Creation {
     executor.shutdown();
   }
 
+  /**
+   * create cold observables
+   * do not create the Observable until the observer subscribes, and create a fresh Observable for each observer
+   */
   private static void test_defer() {
     Observable<Long> observable = Observable.defer(() -> {
       long time = System.currentTimeMillis();
@@ -125,9 +129,6 @@ public class Test1_Creation {
         .subscribe(System.out::println);
   }
 
-  /**
-   * ?
-   */
   private static void test_interval() {
     disposable = Observable.interval(1, TimeUnit.SECONDS, Schedulers.trampoline())
         .doOnNext(System.out::println)
@@ -137,6 +138,14 @@ public class Test1_Creation {
   private static void test_interval_range() {
     disposable = Observable.intervalRange(1, 10, 2, 1, TimeUnit.SECONDS, Schedulers.io())
         .subscribe(System.out::println);
+  }
+
+  /**
+   * 5秒之后发射0L
+   */
+  private static void test_timer(){
+    Observable.timer(5,TimeUnit.SECONDS)
+        .blockingSubscribe(System.out::println);
   }
 
   /**
@@ -157,31 +166,9 @@ public class Test1_Creation {
   }
 
   private static void test_error() {
-/*    disposable = Observable.error(new NullPointerException("test_error"))
+    disposable = Observable.error(new NullPointerException("test_error"))
         .subscribe(System.out::println,
             System.out::println,
-            () -> System.out.println("onComplete"))*/
-    ;
-
-    Observable<String> observable = Observable.fromCallable(() -> {
-      if (Math.random() < 0.5) {
-        throw new IOException();
-      }
-      throw new IllegalArgumentException();
-    });
-
-    Observable<String> result = observable.onErrorResumeNext(error -> {
-      if (error instanceof IllegalArgumentException) {
-        return Observable.empty();
-      }
-      return Observable.error(error);
-    });
-
-    for (int i = 0; i < 10; i++) {
-      result.subscribe(
-          v -> System.out.println("This should never be printed!"),
-          error -> error.printStackTrace(),
-          () -> System.out.println("Done"));
-    }
+            () -> System.out.println("onComplete"));
   }
 }

@@ -2,6 +2,7 @@ package me.demo.rx.operater_test;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.BiFunction;
+import io.reactivex.schedulers.Schedulers;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,9 +14,9 @@ public class Test4_Combining {
   public static void main(String[] args) {
     //test_startwith();
     //test_merge();
-    //test_mergedelayerror();
+    //test_mergeDelayError();
     //test_zip();
-    test_combinelatest();
+    test_combineLatest();
   }
 
   private static void test_startwith() {
@@ -32,7 +33,7 @@ public class Test4_Combining {
         .subscribe();
   }
 
-  private static void test_mergedelayerror() {
+  private static void test_mergeDelayError() {
     Observable.mergeDelayError(
         Observable.just(1, 2, 3),
         Observable.error(new IllegalArgumentException()))
@@ -54,16 +55,19 @@ public class Test4_Combining {
   /**
    * ?
    */
-  private static void test_combinelatest() {
-    Observable<Long> newsRefreshes = Observable.interval(100, TimeUnit.MILLISECONDS);
-    Observable<Long> weatherRefreshes = Observable.interval(50, TimeUnit.MILLISECONDS);
+  private static void test_combineLatest() {
+    Observable<Long> newsRefreshes = Observable.interval(100, TimeUnit.MILLISECONDS,Schedulers.newThread());
+    Observable<Long> weatherRefreshes = Observable.interval(50, TimeUnit.MILLISECONDS,Schedulers.newThread());
     Observable.combineLatest(newsRefreshes, weatherRefreshes,
         (newsRefreshTimes, weatherRefreshTimes) ->
             "Refreshed news " + newsRefreshTimes + " times and weather " + weatherRefreshTimes)
+        .observeOn(Schedulers.trampoline())
         .subscribe(item -> System.out.println(item));
   }
 
   private static void test_join(){
+    Observable<Integer> source1 = Observable.just(1,2,3);
+    Observable<Integer> source2 = Observable.just(4,5,6);
 
   }
 
