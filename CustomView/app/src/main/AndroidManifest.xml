@@ -27,6 +27,8 @@
         <activity android:name=".anim.AnimActivity" />
 
         <activity android:name=".ZoomActivity" />
+        <activity android:name=".chart.ChartActivity" />
+        <activity android:name=".DetailActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:background="@color/colorAccent">
+
+
+    <TextView
+        android:id="@+id/y"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="Y" />
+
+    <TextView
+        android:id="@+id/curve"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="50dp"
+        android:layout_toRightOf="@id/y"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:text="curve" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/y"
+        android:background="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:text="X" />
+
+
+    <TextView
+        android:layout_alignRight="@id/curve"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@android:color/black"
+        android:text="123456789012345678901234567890" />
+
+</RelativeLayout>
