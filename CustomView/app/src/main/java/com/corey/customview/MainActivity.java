@@ -7,10 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.corey.customview.chart.ChartActivity;
-import com.corey.customview.chart.DataProcessor;
 import com.corey.customview.edittext.EditTextActivity;
 import com.corey.customview.gcssloop.CanvasActivity;
 import com.corey.customview.layout_tips.LayoutActivity;
+import com.corey.customview.pager.PagerActivity;
 
 /**
  * Created by sycao on 2017/8/11.
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btn_zoom).setOnClickListener(this);
         findViewById(R.id.btn_chart).setOnClickListener(this);
         findViewById(R.id.btn_detail).setOnClickListener(this);
+        findViewById(R.id.btn_pager).setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_detail:
                 startActivity(new Intent(this, DetailActivity.class));
+                break;
+            case R.id.btn_pager:
+                startActivity(new Intent(this, PagerActivity.class));
                 break;
         }
     }
